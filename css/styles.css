@@ -17,6 +17,7 @@
   --border-color: #ececec;
   --bg-button: #f5f4fa;
   --hero-linear-gradient: rgba(47, 48, 58, 0.4);
+  --bgcolor-product-text: rgba(47, 48, 58, 0.8);
   --team-sotial-color: #afb1b8;
   --footer-bg-icon: rgba(255, 255, 255, 0.1);
   --box-shadow-filter: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
@@ -24,6 +25,10 @@
   --box-shadow-exsemples: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
   --button-acent-color: #188ce8;
+  --cubic: cubic-bezier(0.4, 0, 0.2, 1);
+  --bg-overlay: rgba(33, 150, 243, 0.9);
+  --bg-backdrop: rgba(0, 0, 0, 0.2);
+  --border-close-bacdrop: rgba(0, 0, 0, 0.1);
 }
 html {
   box-sizing: border-box;
@@ -106,6 +111,8 @@ body {
   padding-top: 32px;
   padding-bottom: 32px;
 
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   color: var(--titel-color);
   font-weight: 500;
   font-size: 14px;
@@ -117,7 +124,19 @@ body {
   color: var(--acent-color);
 }
 .link.current {
+  position: relative;
   color: var(--acent-color);
+}
+.link.current::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+
+  background-color: var(--acent-color);
 }
 .header-contacts {
   display: flex;
@@ -126,6 +145,9 @@ body {
 .header-contacts .link {
   display: flex;
   align-items: center;
+
+  transition: color 250ms var(--cubic), fill 250ms var(--cubic);
+
   color: var(--text-color);
   fill: var(--text-color);
   font-weight: 500;
@@ -183,6 +205,8 @@ body {
 .hero-button {
   padding: 10px 32px;
 
+  transition: background-color 250ms var(--cubic);
+
   background-color: var(--acent-color);
   color: var(--white-color);
   border-radius: 4px;
@@ -199,6 +223,60 @@ body {
   background-color: var(--button-acent-color);
 }
 
+.backdrop {
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 100%;
+
+  opacity: 1;
+  transition: opacity 250ms var(--cubic);
+
+  background-color: var(--bg-backdrop);
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.8);
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 530px;
+  min-height: 580px;
+  
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms var(--cubic);
+
+  background-color: var(--white-color);
+}
+
+.modal-close {
+  position: absolute;
+  display: inline-flex;
+
+  top: 10px;
+  right: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+
+  transition: fill 250ms var(--cubic);
+   
+  cursor: pointer;
+  border-radius: 50%;
+  border: 1px solid var(--border-close-bacdrop);
+  background-color: var(--white-color);
+  fill: var(--logo-header-text)
+}
+.modal-close:hover {
+  fill: var(--acent-color);
+}
 /* Наші переваги */
 .features-list {
   display: flex;
@@ -250,10 +328,27 @@ body {
   display: flex;
 }
 .product-list .item {
-  display: flex;
+  position: relative;
 }
 .product-list .item:not(:last-child) {
   margin-right: 30px;
+}
+.product-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 27px 0;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  text-transform: uppercase;
+
+  color: var(--white-color);
+  background-color: var(--bgcolor-product-text);
 }
 
 /* Наша команда */
@@ -275,11 +370,12 @@ body {
 }
 .team-list > .item {
   padding-bottom: 30px;
-  text-align: center;
+  
   background: var(--white-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 0px 0px 4px 4px;
+  text-align: center;
 }
 .team-list > .item:not(:last-child) {
   margin-right: 30px;
@@ -314,6 +410,9 @@ body {
   justify-content: center;
   width: 44px;
   height: 44px;
+
+  transition: fill 250ms var(--cubic), background-color 250ms var(--cubic);
+
   border-radius: 50%;
   fill: var(--team-sotial-color);
 }
@@ -345,6 +444,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 92px;
+
+  transition: fill 250ms var(--cubic), border-color 250ms var(--cubic);
 
   border: 1px solid var(--team-sotial-color);
   border-radius: 4px;
@@ -390,6 +491,7 @@ body {
 }
 .address-list .contact {
   color: var(--text-link-address);
+  transition: color 250ms var(--cubic)
 }
 .address-list .contact:hover {
   color: var(--white-color);
@@ -400,8 +502,8 @@ body {
 .subscribe-text {
   margin-top: 0;
   margin-bottom: 20px;
+  
   color: var(--white-color);
-
   font-weight: 700;
   font-size: 14px;
   line-height: 1.14;
@@ -420,6 +522,9 @@ body {
   justify-content: center;
   width: 44px;
   height: 44px;
+
+  transition: background-color 250ms var(--cubic);
+  
   border-radius: 50%;
   background-color: var(--footer-bg-icon);
   fill: var(--white-color);
@@ -441,6 +546,9 @@ body {
 }
 .filter-list .button {
   padding: 6px 22px;
+
+  transition: background-color 250ms var(--cubic), box-shadow 250ms var(--cubic), color 250ms var(--cubic) ;
+
   background-color: var(--bg-button);
   border-radius: 4px;
   border: none;
@@ -453,8 +561,6 @@ body {
 .filter-list .button:hover,
 .filter-list .button:focus {
   box-shadow: var(--box-shadow-filter);
-  border-radius: 4px;
-
   background-color: var(--acent-color);
   color: var(--white-color);
 }
@@ -471,10 +577,38 @@ body {
 }
 .exsemples-link {
   display: inline-block;
+
+  transition: box-shadow 250ms var(--cubic);
 }
 .exsemples-link:hover,
 .exsemples-link:focus {
   box-shadow: var(--box-shadow-exsemples);
+}
+.thumb-exsempl {
+  position: relative;
+  overflow: hidden;
+}
+.overlay-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 65px 25px;
+  
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 250ms var(--cubic), opacity 250ms var(--cubic);
+
+  background-color: var(--bg-overlay);
+  color: var(--white-color);
+  font-size: 18px;
+  line-height: 1.56;
+}
+.exsemples-link:hover .overlay-text {
+  transform: translateY(0);
+  opacity: 1;
 }
 .item-card {
   padding-top: 20px;
