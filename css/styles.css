@@ -252,6 +252,7 @@ body {
   transform: translate(-50%, -50%) scale(1);
   transition: transform 250ms var(--cubic);
 
+  border-radius: 4px;
   background-color: var(--white-color);
 }
 
@@ -259,8 +260,8 @@ body {
   position: absolute;
   display: inline-flex;
 
-  top: 10px;
-  right: 10px;
+  top: 8px;
+  right: 8px;
   justify-content: center;
   align-items: center;
   width: 30px;
