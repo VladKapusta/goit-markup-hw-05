@@ -112,7 +112,7 @@
                         <img src="./images/box2.jpg" alt="Мобільні додатки" width="370" class="pfoto">
                         <p class="product-text">Мобільні додатки</p>
                     </li>
-                    <li class="item">                        
+                    <li class="item">
                         <img src="./images/box3.jpg" alt="Дизайнерські рішення" width="370" class="pfoto">
                         <p class="product-text">Дизайнерські рішення</p>
                     </li>
@@ -338,31 +338,31 @@
                     </ul>
                 </address>
             </div>
-            <div class="subscribe">
-                <p class="subscribe-text">Приєднуйтесь</p>
-                <ul class="subscribe-list list">
-                    <li class="subscribe-item item">
+            <div class="studio-sotial">
+                <p class="studio-sotial-text">Приєднуйтесь</p>
+                <ul class="studio-sotial-list list">
+                    <li class="studio-sotial-item item">
                         <a href="" class="icon-link">
                             <svg width="20" height="20" class="icon">
                                 <use href="./images/svg.sprite.svg#icon-instagram"></use>
                             </svg>
                         </a>
                     </li>
-                    <li class="subscribe-item item">
+                    <li class="studio-sotial-item item">
                         <a href="" class="icon-link">
                             <svg width="20" height="20" class="icon">
                                 <use href="./images/svg.sprite.svg#icon-twitter"></use>
                             </svg>
                         </a>
                     </li>
-                    <li class="subscribe-item item">
+                    <li class="studio-sotial-item item">
                         <a href="" class="icon-link">
                             <svg width="20" height="20" class="icon">
                                 <use href="./images/svg.sprite.svg#icon-facebook"></use>
                             </svg>
                         </a>
                     </li>
-                    <li class="subscribe-item item">
+                    <li class="studio-sotial-item item">
                         <a href="" class="icon-link">
                             <svg width="20" height="20" class="icon">
                                 <use href="./images/svg.sprite.svg#icon-linkedin"></use>
@@ -371,20 +371,74 @@
                     </li>
                 </ul>
             </div>
+            <div class="subscrib">
+                <form>
+                    <p class="subscrib-text">Підпишіться на розсилку</p>
+                    <input type="email" name="maill" placeholder="E-mail" class="subscrib-input">
+                    <button type="submit" class="subscrib-submit">Підписатися
+                        <svg width="24" height="24" class="icon-send">
+                            <use href="./images/svg.sprite.svg#icon-send"></use>
+                        </svg>
+                    </button>
+                </form>
+            </div>
         </div>
     </footer>
 
-<div class="backdrop is-hidden" data-modal>
-    <div class="modal">
-        <button type="button" class="modal-close" data-modal-close>
-            <svg width="11" height="11" class="icon-close">
-                <use href="./images/svg.sprite.svg#icon-close"></use>
-            </svg>
-        </button>
-    </div>
-</div>
+    <!-- Модальне вікно -->
+    <div class="backdrop is-hidden" data-modal>
+        <div class="modal">
+            <button type="button" class="modal-close" data-modal-close>
+                <svg width="11" height="11" class="icon-close">
+                    <use href="./images/svg.sprite.svg#icon-close"></use>
+                </svg>
+            </button>
+            <p class="form-text">Залиште свої дані, ми вам передзвонимо</p>
+            <form class="form">
+                <label class="form-label">
+                    <span class="label-text">Ім'я</span>
+                    <input type="text" name="name" class="form-input">
+                    <svg width="18" height="18" class="icon-form">
+                        <use href="./images/svg.sprite.svg#icon-person"></use>
+                    </svg>
+                </label>
+                <label class="form-label">
+                    <span class="label-text">Телефон</span>
+                    <input type="tel" name="tell" class="form-input">
+                    <svg width="18" height="18" class="icon-form">
+                        <use href="./images/svg.sprite.svg#icon-phone"></use>
+                    </svg>
+                </label>
+                <label class="form-label">
+                    <span class="label-text">Пошта</span>
+                    <input type="email" name="email" class="form-input">
+                    <svg width="18" height="18" class="icon-form">
+                        <use href="./images/svg.sprite.svg#icon-email"></use>
+                    </svg>
+                </label>
 
-<script src="./js/modal.js"></script>
+
+                <label class="form-textarea">
+                    <span class="label-text">Коментар</span>
+                    <textarea name="comment" placeholder="Введіть техт" class="textarea"></textarea>
+                </label>
+
+
+                <label class="checkbox-label">
+                    <input type="checkbox" value="" name="" class="checkbox-input">
+                    <svg width="16" height="15" class="icon-check">
+                        <use href="./images/svg.sprite.svg#icon-check"></use>
+                    </svg>
+                    Погоджуюся з розсилкою та приймаю <a href="">Умови договору</a>
+                </label>
+
+
+                <button type="submit" class="form-submit">Відправити</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="./js/modal.js"></script>
 </body>
 
 </html>

@@ -29,6 +29,8 @@
   --bg-overlay: rgba(33, 150, 243, 0.9);
   --bg-backdrop: rgba(0, 0, 0, 0.2);
   --border-close-bacdrop: rgba(0, 0, 0, 0.1);
+  --border-subscrib-input: rgba(255, 255, 255, 0.3);
+  --border-form-input: rgba(33, 33, 33, 0.2);
 }
 html {
   box-sizing: border-box;
@@ -128,7 +130,7 @@ body {
   color: var(--acent-color);
 }
 .link.current::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
@@ -226,7 +228,7 @@ body {
 .backdrop {
   position: fixed;
   top: 0;
-  left:0;
+  left: 0;
   width: 100%;
   height: 100%;
 
@@ -246,9 +248,10 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 530px;
+  padding: 40px;
+  width: 530px;
   min-height: 580px;
-  
+
   transform: translate(-50%, -50%) scale(1);
   transition: transform 250ms var(--cubic);
 
@@ -268,19 +271,139 @@ body {
   height: 30px;
 
   transition: fill 250ms var(--cubic);
-   
+
   cursor: pointer;
   border-radius: 50%;
   border: 1px solid var(--border-close-bacdrop);
   background-color: var(--white-color);
-  fill: var(--logo-header-text)
+  fill: var(--logo-header-text);
 }
 .modal-close:hover {
   fill: var(--acent-color);
 }
+
+.form-text {
+  margin-top: 0;
+  margin-bottom: 12px;
+
+  color: var(--titel-color);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.15;
+  text-align: center;
+}
+.form-label {
+  position: relative;
+  display: block;
+  margin-bottom: 10px;
+
+  color: var(--text-color);
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.01em;
+}
+.label-text {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+.form-input {
+  padding: 12px 42px;
+  width: 100%;
+  
+  border: 1px solid var(--border-form-input);
+  border-radius: 4px;
+}
+.form-input:focus {
+ border: 1px solid var(--acent-color);
+ outline: transparent;
+}
+.form-label:focus-within {
+  fill: var(--acent-color);
+}
+.icon-form {
+  position: absolute;
+  top: 29px;
+  left: 12px;
+}
+
+.form-textarea {
+  display: block;
+  color: var(--text-color);
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.01em;
+}
+.textarea {
+  display: block;
+  margin: 0;
+  padding: 0;
+  padding: 12px 16px;
+  width: 100%;
+  height: 120px;
+  
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  resize: none;
+}
+.textarea::placeholder {
+  position: absolute;
+  top: 20px;
+  left: 18px;
+  color: rgba(117, 117, 117, 0.5);
+  font-size: 12px;
+  line-height: 1.16px;
+  letter-spacing: 0.01em;
+}
+
+.checkbox-label {
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.71;
+}
+.checkbox-input:checked + .icon-check {
+  background-color: var(--acent-color);
+  border: 1px solid var(--acent-color);
+}
+.checkbox-input {
+  opacity: 0;
+}
+.icon-check {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  background-color: var(--white-color);
+  border: 1px solid #212121;
+  border-radius: 2px;
+}
+.form-submit {
+ display: block;
+ margin-top: 30px;
+ margin-right: auto;
+ margin-left: auto;
+  padding: 10px 28px;
+  min-width: 200px;
+
+  background-color: var(--acent-color);
+  color: var(--white-color);
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.88;
+  text-align: center;
+  letter-spacing: 0.06em;
+}
+
 /* Наші переваги */
 .features-list {
   display: flex;
+  padding: 50px;
 }
 .features-list .item {
   flex-basis: calc((100%-90px) / 4);
@@ -371,7 +494,7 @@ body {
 }
 .team-list > .item {
   padding-bottom: 30px;
-  
+
   background: var(--white-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -492,32 +615,32 @@ body {
 }
 .address-list .contact {
   color: var(--text-link-address);
-  transition: color 250ms var(--cubic)
+  transition: color 250ms var(--cubic);
 }
 .address-list .contact:hover {
   color: var(--white-color);
 }
-.subscribe {
-  margin-left: 72px;
+.studio-sotial {
+  margin-left: 88px;
 }
-.subscribe-text {
+.studio-sotial-text {
   margin-top: 0;
   margin-bottom: 20px;
-  
+
   color: var(--white-color);
   font-weight: 700;
   font-size: 14px;
   line-height: 1.14;
   text-transform: uppercase;
 }
-.subscribe-list {
+.studio-sotial-list {
   display: flex;
   margin: 0;
 }
-.subscribe-list .subscribe-item:not(:last-child) {
+.studio-sotial-list .studio-sotial-item:not(:last-child) {
   margin-right: 10px;
 }
-.subscribe-item .icon-link {
+.studio-sotial-item .icon-link {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -525,14 +648,67 @@ body {
   height: 44px;
 
   transition: background-color 250ms var(--cubic);
-  
+
   border-radius: 50%;
   background-color: var(--footer-bg-icon);
   fill: var(--white-color);
 }
-.subscribe-item .icon-link:hover,
-.subscribe-item .icon-link:focus {
+.studio-sotial .icon-link:hover,
+.studio-sotial .icon-link:focus {
   background-color: var(--acent-color);
+}
+
+.subscrib {
+  margin-left: 93px;
+}
+.subscrib-text {
+  margin-top: 0;
+  margin-bottom: 20px;
+
+  color: var(--white-color);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-transform: uppercase;
+}
+.subscrib-input {
+  margin: 0;
+  padding: 15px 16px;
+  width: 360px;
+
+  outline: none;
+  border: 1px solid var(--border-subscrib-input);
+  border-radius: 4px;
+  background-color: var(--background-footer);
+  color: var(--white-color);
+  font-size: 16px;
+  line-height: 1.25;
+}
+.subscrib-submit {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 12px;
+  padding: 10px 28px;
+  min-width: 200px;
+
+  background-color: var(--acent-color);
+  color: var(--white-color);
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.88;
+  text-align: center;
+  letter-spacing: 0.06em;
+}
+.subscrib-submit:hover,
+.subscrib-submit:focus {
+  background-color: var(--button-acent-color);
+}
+.icon-send {
+  margin-left: 10px;
 }
 
 /* ПОРТФОЛІО */
@@ -548,7 +724,8 @@ body {
 .filter-list .button {
   padding: 6px 22px;
 
-  transition: background-color 250ms var(--cubic), box-shadow 250ms var(--cubic), color 250ms var(--cubic) ;
+  transition: background-color 250ms var(--cubic), box-shadow 250ms var(--cubic),
+    color 250ms var(--cubic);
 
   background-color: var(--bg-button);
   border-radius: 4px;
@@ -597,7 +774,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 65px 25px;
-  
+
   transform: translateY(100%);
   opacity: 0;
   transition: transform 250ms var(--cubic), opacity 250ms var(--cubic);
